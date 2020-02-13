@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  resources :users [except: :index]
-  resources :notes [except: :index]
-  resources :tags [except: :index]
+	resources :users, only: [:index, :create]
+	resources :notes, only: [:index]
+	resources :tags, only: [:index]
+
+	post '/auth', to: 'auth#create'
+	get '/current_user', to: 'auth#show'
 end
