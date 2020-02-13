@@ -14,14 +14,7 @@ class UsersController < ApplicationController
   end
 
   def show
-  end
-
-  def edit
-  end
-
-  def update
-  end
-
-  def destroy
+    user = User.find(params[:id])
+    render json: user.notes
   end
 end
