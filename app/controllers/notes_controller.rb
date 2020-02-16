@@ -19,4 +19,14 @@ class NotesController < ApplicationController
       render json: {error: 'note could not be edited'}
     end
   end
+
+  def destroy
+    note = Note.find(params[:id])
+    if note.valid?
+      note.delete
+      render json: note
+    else
+      render json: {error: 'note could not be deleted'}
+    end
+  end
 end
